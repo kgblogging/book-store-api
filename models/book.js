@@ -36,6 +36,11 @@ const bookSchema = new mongoose.Schema({
         required: true,
         default: 1
     },
+    genre: {
+        type: mongoose.Schema.Types.ObjectId,  // Reference to Genre
+        ref: 'Genre', // Link to Genre model
+        required: true,
+    },
     createdAt: {
         type: Date,
         default: Date.now()

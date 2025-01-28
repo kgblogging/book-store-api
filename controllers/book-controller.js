@@ -4,10 +4,8 @@ const Book = require("../models/book")
 const getAllBooks = async (req, res, next) => {
     try {
         const { query, sortQuery, skip, limit } = req.queryDetails;
-        const allBooks = await Book.find(query).sort(sortQuery).skip(skip).limit(limit);
-
+        const allBooks = await Book.find(query).sort(sortQuery).skip(skip).limit(limit).populate('genre', 'title');
         const totalBooks = await Book.countDocuments(query);
-
         res.status(200).json({
             status: true,
             data: allBooks,

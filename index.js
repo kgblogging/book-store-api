@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 5000;
 const connectToDb = require('./database/db')
 const bookRoute = require('./routes/book-routes')
 const authRoute = require('./routes/auth-routes')
+const genreRoute = require('./routes/genre-routes')
 const errorHandler = require('./middleware/errorHandler');
 const authMiddleware = require('./middleware/authMiddleware')
 
@@ -29,5 +30,7 @@ app.listen(PORT, () => {
 
 app.use('/v1/api/books', authMiddleware, bookRoute)
 app.use('/v1/api/auth', authRoute)
+app.use('/v1/api/genre', genreRoute)
+
 
 app.use(errorHandler);
